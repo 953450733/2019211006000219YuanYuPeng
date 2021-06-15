@@ -1,16 +1,16 @@
 package com.YuanYuPeng.dao;
 
-import com.YuanYuPeng.model.Item;
-import com.YuanYuPeng.model.Order;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.YuanYuPeng.model.Item;
+import com.YuanYuPeng.model.Order;
+
 public interface IOrderDao {
 
 	/**
-	 * Save Order instance into Order Table 
+	 * Save Order instance into Order Table
 	 * @param con
 	 * @param order
 	 * @return int
@@ -18,7 +18,7 @@ public interface IOrderDao {
 	int save(Connection con, Order order) throws SQLException;
 
 	/**
-	 * Delete a Order 
+	 * Delete a Order
 	 * @param con
 	 * @param order
 	 * @return int
@@ -26,7 +26,7 @@ public interface IOrderDao {
 	int delete(Connection con, Order order);
 
 	/**
-	 * Update a Order 
+	 * Update a Order
 	 * @param con
 	 * @param order
 	 * @return int
@@ -46,80 +46,80 @@ public interface IOrderDao {
 	 * @param con
 	 * @param propertyName
 	 * @param value
-	 * @return List of com.dabing.model.Order 
+	 * @return List of com.dabing.model.Order
 	 */
 	List<Order> findByProperty(Connection con, String propertyName, Object value);
 
 	/**
-	 * Get a Order List by first name 
+	 * Get a Order List by first name
 	 * @param con
 	 * @param firstName
-	 * @return  List of com.dabing.model.Order 
+	 * @return  List of com.dabing.model.Order
 	 */
 	List<Order> findByFirstName(Connection con, Object firstName);
 
 	/**
-	 * Get a Order List by last name 
+	 * Get a Order List by last name
 	 * @param con
 	 * @param lastName
-	 * @return  List of com.dabing.model.Order 
+	 * @return  List of com.dabing.model.Order
 	 */
 	List<Order> findByLastName(Connection con, Object lastName);
 
 	/**
-	 * Get a Order List by address1  
+	 * Get a Order List by address1
 	 * @param con
 	 * @param address1
-	 * @return  List of com.dabing.model.Order 
+	 * @return  List of com.dabing.model.Order
 	 */
 	List<Order> findByAddress1(Connection con, Object address1);
 
 	/**
 	 * @param con
 	 * @param address2
-	 * @return  List of com.dabing.model.Order 
+	 * @return  List of com.dabing.model.Order
 	 */
 	List<Order> findByAddress2(Connection con, Object address2);
 
 	/**
 	 * @param con
 	 * @param city
-	 * @return  List of com.dabing.model.Order 
+	 * @return  List of com.dabing.model.Order
 	 */
 	List<Order> findByCity(Connection con, Object city);
 
 	/**
 	 * @param con
 	 * @param state
-	 * @return  List of com.dabing.model.Order 
+	 * @return  List of com.dabing.model.Order
 	 */
 	List<Order> findByState(Connection con, Object state);
 
 	/**
 	 * @param con
 	 * @param postalCode
-	 * @return  List of com.dabing.model.Order 
+	 * @return  List of com.dabing.model.Order
 	 */
 	List<Order> findByPostalCode(Connection con, Object postalCode);
 
 	/**
 	 * @param con
 	 * @param country
-	 * @return  List of com.dabing.model.Order 
+	 * @return  List of com.dabing.model.Order
 	 */
 	List<Order> findByCountry(Connection con, Object country);
 
 	/**
 	 * @param con
 	 * @param phone
-	 * @return  List of com.dabing.model.Order 
+	 * @return  List of com.dabing.model.Order
 	 */
 	List<Order> findByPhone(Connection con, Object phone);
 
 	/**
 	 * @param con
 	 * @param notes
-	 * @return  List of com.dabing.model.Order 
+	 * @return  List of com.dabing.model.Order
 	 */
 	List<Order> findByNotes(Connection con, Object notes);
 
@@ -127,14 +127,14 @@ public interface IOrderDao {
 	 *
 	 * @param con
 	 * @param orderTotal
-	 * @return  List of com.dabing.model.Order 
+	 * @return  List of com.dabing.model.Order
 	 */
 	List<Order> findByOrderTotal(Connection con, Object orderTotal);
 
 	/**
 	 * Select All List of Order
 	 * @param con
-	 * @return  List of com.dabing.model.Order 
+	 * @return  List of com.dabing.model.Order
 	 */
 	List<Order> findAll(Connection con);
 

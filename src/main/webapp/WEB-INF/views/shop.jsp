@@ -20,10 +20,10 @@
 					<h2>Category</h2>
 					<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 						<!-- Loop_start -->
-						<c:forEach var="c" items="${requestScope.categoryList}">
+						<c:forEach var="c" items="${categoryList}">
 							<div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="<%=basePath%>shop?categoryId=${c.categoryId}">${c.categoryName} </a></h4>
+									<h4 class="panel-title"><a href="<%=basePath%>shop?categoryId=${c.categoryId}">${c.categoryName}</a></h4>
 								</div>
 
 							</div>
@@ -51,7 +51,7 @@
 				<div class="features_items"><!--features_items-->
 					<h2 class="title text-center">Features Items</h2>
 					<!-- loop_start -->
-					<c:forEach var="p" items="${requestScope.productList}">
+					<c:forEach var="p" items="${productList}">
 						<div class="col-sm-4 padding-right">
 
 							<div class="product-image-wrapper">

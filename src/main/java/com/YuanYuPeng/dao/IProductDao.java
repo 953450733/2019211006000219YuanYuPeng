@@ -2,9 +2,11 @@ package com.YuanYuPeng.dao;
 
 import com.YuanYuPeng.model.Product;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
+
 
 
 public interface IProductDao {
@@ -37,7 +39,7 @@ public interface IProductDao {
 	/**
 	 * Select product by price between minprice and maxPrice
 	 * @return List of product
-	*/
+	 */
 	public List<Product> findByPrice(double minPrice, double maxPrice,Connection con) throws SQLException;
 	/**
 	 * Find all products

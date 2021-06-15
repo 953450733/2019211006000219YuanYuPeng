@@ -1,5 +1,6 @@
 <%@include file="header.jsp" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <section id="z`z`">
 	<div class="container">
 		<div class="breadcrumbs">
@@ -20,9 +21,9 @@
 						<p>Bill To</p>
 						<div class="form-one">
 							<form action="<%=basePath%>order" method="post">
-								<c:if test="${!empty sessionScope.user}">
+								<c:if test="${!empty user}">
 
-								<input type="hidden" name="customerId" value="${sessionScope.user.id}">
+								<input type="hidden" name="customerId" value="${user.id}">
 								</c:if>
 								<input type="text" name="firstName" placeholder="First Name *">
 								<input type="text"  name="lastName" placeholder="Last Name *">
@@ -89,7 +90,7 @@
 						</thead>
 						<tbody>
 						<c:choose>
-							<c:when test="${ empty sessionScope.cart}">
+							<c:when test="${ empty cart}">
 								<tr><td colspan="5">
 									<div class="content-404 text-center">
 										<img src="<%=basePath %>images/cart/empty_cart.png" class="img-responsive" alt="" />
@@ -101,7 +102,7 @@
 							<c:otherwise>
 								<!-- loop_start -->
 								<c:set var="cal" value="0.0"/>
-								<c:forEach var="c" items="${sessionScope.cart}">
+								<c:forEach var="c" items="${cart}">
 									<tr>
 										<td class="cart_product">
 											<a href="">
@@ -134,7 +135,7 @@
 				</div>
 			</div>
 		</section> <!--/#cart_items-->
-		<c:if test="${!empty sessionScope.cart }">
+		<c:if test="${!empty cart }">
 			<section id="do_action">
 				<div class="container">
 
@@ -160,9 +161,9 @@
 
 			<div class="payment-options">
 				<!-- loop_start -->
-				<c:forEach var="pType" items="${requestScope.paymentTypeList}">
+				<c:forEach var="pType" items="${paymentTypeList}">
 					<span>
-						<label><input name="paymentId" value="${pType.paymentId}" type="checkbox" varStatus="status"  value="${pType.paymentId}">${pType.paymentType} </label>
+						<label><input name="paymentId" value="1" type="checkbox" varStatus="status"  value="${pType.paymentId}">${pType.paymentType}</label>
 					</span>
 				</c:forEach>
 				<!-- loop_end -->

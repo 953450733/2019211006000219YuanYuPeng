@@ -1,6 +1,6 @@
 <%@include file="header.jsp" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page import="com.WuYaling.model.User" %>
+<%@ page import="com.YuanYuPeng.model.User" %>
 <section id="z`z`">
 	<div class="container">
 		<div class="step-one">
@@ -18,7 +18,7 @@
 					<li>Password :<span><%=u.getPassword()%></span></li>
 					<li>Email :<span><%=u.getEmail()%></span></li>
 					<li>Gender :<span><%=u.getGender()%></span></li>
-					<li>Birthdate :<span><%=u.getBirthdate()%></span></li>
+					<li>Birthdate :<span><%=u.getBirth()%></span></li>
 				</ul>
 				<a class="btn btn-default update" href="updateUser?id=<%=u.getId()%>">Update</a>
 				<%}%>
@@ -49,7 +49,7 @@
 					</tr></thead>
 					<tbody>
 					<c:choose>
-						<c:when test="${ empty requestScope.orderList}">
+						<c:when test="${ empty orderList}">
 							<tr><td colspan="6">
 								<div class="content-404 text-center">
 									<img src="<%=basePath %>images/cart/no_order.png" class="img-responsive" alt="" />
@@ -60,26 +60,26 @@
 						</c:when>
 						<c:otherwise>
 							<!-- loop_start -->
-							<c:forEach var="o" items="${requestScope.orderList}">
+							<c:forEach var="o" items="${orderList}">
 								<tr>
 									<td>OID:${o.orderId}</td>
 									<td>${o.orderDate}</td>
 									<td><p>${o.firstName} ${o.lastName}</p>
-										<p> ${o.address1}</p>
+										<p>${o.address1}</p>
 										<p>${o.address2}</p>
 										<p>${o.city},${o.state},${o.country}-${o.postalCode}</p>
 										<p>${o.phone}</p>
 									</td>
 									<td class="cart_total">
 										<%
-											com.WuYaling.model.Order o=(com.WuYaling.model.Order)pageContext.findAttribute("o");
+											com.YuanYuPeng.model.Order o=(com.YuanYuPeng.model.Order)pageContext.findAttribute("o");
 											int n=o.getPaymentId();
 											java.sql.Connection con=(java.sql.Connection)application.getAttribute("con");
-											String paymentType=com.WuYaling.model.Payment.findByPaymentId(con,n);
+											String paymentType=com.YuanYuPeng.model.Payment.findByPaymentId(con,n);
 										%>
 										<p class="cart_total_price"><%=paymentType %></p>
 									</td>
-									<td><button class="btn btn-default update" id="${o.orderId }">Details</button></td>
+									<td><button class="btn btn-default update" id="${o.orderId}" name="button">Details</button></td>
 
 								</tr>
 							</c:forEach>
@@ -101,77 +101,85 @@
 
 
 			</div>
-		</div></div></section>
 
-<div id="popup_box">    <!-- OUR PopupBox DIV-->
 
-	<a id="popupBoxClose">Close</a>
 
-	<div id="container"> <!-- Main Page -->
-	</div>
-</div>
 
-<style type="text/css"> /* popup_box DIV-Styles*/ #popup_box {
-	display:none; /* Hide the DIV */
-	position:fixed;
-	_position:absolute; /* hack for internet explorer 6 */
-	height:500px;
-	width:700px;
-	background:#FFFFFF;
-	left: 450px;
-	top: 50px;
-	z-index:100; /* Layering ( on-top of others), if you have lots of layers: I just maximized, you can change it yourself */
-	margin-left: 15px;            /* additional features, can be omitted */
-	border:2px solid #FE980F;
-	padding:15px;
-	font-size:15px;
-	-moz-box-shadow: 0 0 5px #ff0000;
-	-webkit-box-shadow: 0 0 5px #ff0000;
-	box-shadow: 0 0 5px #ff0000;      }
-#container {     background: #FFFFFF; /*Sample*/ overflow-y:auto;    width:100%;     height:100%; }
-a{   cursor: pointer;   text-decoration:none;   }   /* This is for the positioning of the Close Link */
-#popupBoxClose {     font-size:15px;       line-height:15px;       right:5px;       top:5px;       position:absolute;       color:#6fa5e2;       font-weight:500;       }
-</style>
-<script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
-<script>
-	$(document).ready(function() {
-		$('button').click(function() {
-			var t = $(this).attr('id');
+		</div>
+		<section> <!--/#cart_items-->
 
-			$.ajax({
-				url : '<%=basePath%>orderDetails',
-				data : {
-					orderId : t
-				},
-				success : function(responseText) {
-					loadPopupBox();
-					$('#container').html(responseText);
-					$("#container").dialog();
+			<div id="popup_box">    <!-- OUR PopupBox DIV-->
 
-				}
-			});//ajax
-		});//click
-		$('#popupBoxClose').click( function() {
-			unloadPopupBox();
-		});
+				<a id="popupBoxClose">Close</a>
 
-		$('#container').click( function() {
-			unloadPopupBox();
-		});
+				<div id="container"> <!-- Main Page -->
+				</div>
+			</div>
 
-		function unloadPopupBox() {    // TO Unload the Popupbox
-			$('#popup_box').fadeOut("slow");
-			$("#container").css({ // this is just for style
-				"opacity": "0.3"
-			});
-		}
+			<style type="text/css"> /* popup_box DIV-Styles*/ #popup_box {
+				display:none; /* Hide the DIV */
+				position:fixed;
+				_position:absolute; /* hack for internet explorer 6 */
+				height:500px;
+				width:700px;
+				background:#FFFFFF;
+				left: 450px;
+				top: 50px;
+				z-index:100; /* Layering ( on-top of others), if you have lots of layers: I just maximized, you can change it yourself */
+				margin-left: 15px;            /* additional features, can be omitted */
+				border:2px solid #FE980F;
+				padding:15px;
+				font-size:15px;
+				-moz-box-shadow: 0 0 5px #ff0000;
+				-webkit-box-shadow: 0 0 5px #ff0000;
+				box-shadow: 0 0 5px #ff0000;      }
+			#container {     background: #FFFFFF; /*Sample*/ overflow-y:auto;    width:100%;     height:100%; }
+			a{   cursor: pointer;   text-decoration:none;   }   /* This is for the positioning of the Close Link */
+			#popupBoxClose {     font-size:15px;       line-height:15px;       right:5px;       top:5px;       position:absolute;       color:#6fa5e2;       font-weight:500;       }
+			</style>
+			<script src="https://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
+			<script>
+				$(document).ready(function() {
+					$('button').click(function() {
+						var t = $(this).attr('id');
 
-		function loadPopupBox() {    // To Load the Popupbox
-			$('#popup_box').fadeIn("slow");
-			$("#container").css({ // this is just for style
-				"opacity": "1"
-			});
-		}
-	});
-</script>
-<%@include file="footer.jsp" %>
+						$.ajax({
+							url : '<%=basePath%>orderDetails',
+							data : {
+								orderId : t,
+								type: 'get'
+							},
+							success : function(responseText) {
+								// alert("success")
+								// alert(responseText.getAttribute(itemList));
+								loadPopupBox();
+								$('#container').html(responseText);
+								$("#container").dialog();
+
+							}
+						});//ajax
+					});//click
+					$('#popupBoxClose').click( function() {
+						unloadPopupBox();
+					});
+
+					$('#container').click( function() {
+						unloadPopupBox();
+					});
+
+					function unloadPopupBox() {    // TO Unload the Popupbox
+						$('#popup_box').fadeOut("slow");
+						$("#container").css({ // this is just for style
+							"opacity": "0.3"
+						});
+					}
+
+					function loadPopupBox() {    // To Load the Popupbox
+						$('#popup_box').fadeIn("slow");
+						$("#container").css({ // this is just for style
+							"opacity": "1"
+						});
+					}
+				});
+			</script>
+			<%@include file="footer.jsp" %>

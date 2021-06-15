@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="header.jsp"%>
 <section id="form"><!--form-->
@@ -28,10 +27,10 @@
                                 }
                             }
                         }
-                        //update 5 user basepa th
+                        //update 5 user basepath
                     %>
 
-                    <form method="post" action="<%=basePath+"login"%>">
+                    <form method="post" action="<%=request.getContextPath()+"/login"%>">
                         <input type="text" name="username" placeholder="Username" value="<%=username%>"><br>
                         <input type="password" name="password" placeholder="password" value="<%=password%>">
                         <br/>
