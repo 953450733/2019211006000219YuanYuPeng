@@ -1,7 +1,5 @@
 package com.YuanYuPeng.dao;
 
-import com.WuYaling.model.Item;
-import com.WuYaling.model.Order;
 import com.YuanYuPeng.model.Item;
 import com.YuanYuPeng.model.Order;
 

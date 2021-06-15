@@ -4,8 +4,6 @@ package com.YuanYuPeng.dao;
 import com.YuanYuPeng.model.Item;
 import com.YuanYuPeng.model.Order;
 import com.YuanYuPeng.model.Product;
-import com.YuanYuPeng.model.Item;
-import com.YuanYuPeng.model.Order;
 
 import java.sql.*;
 import java.util.*;
