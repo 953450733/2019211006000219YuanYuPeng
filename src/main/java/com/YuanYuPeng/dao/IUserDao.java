@@ -1,6 +1,5 @@
 package com.YuanYuPeng.dao;
 
-import com.WuYaling.model.User;
 import com.YuanYuPeng.model.User;
 
 import java.sql.Connection;

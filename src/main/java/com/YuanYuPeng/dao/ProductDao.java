@@ -1,6 +1,5 @@
 package com.YuanYuPeng.dao;
 
-import com.WuYaling.model.Product;
 import com.YuanYuPeng.model.Product;
 
 import java.sql.*;
