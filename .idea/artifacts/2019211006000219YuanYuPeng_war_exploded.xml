@@ -12,6 +12,7 @@
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="2019211006000219YuanYuPeng" />
+          <element id="module-output" name="YuanYuPeng2019211006000219" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Maven: com.microsoft.sqlserver:mssql-jdbc:6.4.0.jre8" />
@@ -27,6 +28,7 @@
         <element id="file-copy" path="$PROJECT_DIR$/target/YuanYuPeng2019211006000219-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="2019211006000219YuanYuPeng/web/Web" />
+      <element id="javaee-facet-resources" facet="YuanYuPeng2019211006000219/web/Web" />
     </root>
   </artifact>
 </component>

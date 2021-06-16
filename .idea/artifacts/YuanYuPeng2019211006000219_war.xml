@@ -9,6 +9,11 @@
     </properties>
     <root id="archive" name="YuanYuPeng2019211006000219-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="2019211006000219YuanYuPeng:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="YuanYuPeng2019211006000219" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>
